@@ -29,12 +29,12 @@ namespace FluteEngine
         /// Creates a Display Object with a given transform
         /// </summary>
         /// <param name="tex">Texture of the display object</param>
-        /// <param name="tra">Transform of the display object</param>
-        public DisplayObject(Texture2D tex, Transform tra)
+        /// <param name="transform">Transform of the display object</param>
+        public DisplayObject(Texture2D tex, Transform transform)
         {
             texture = tex;
-            transform = tra;
-            color = new Color(1, 1, 1, 1);
+            this.transform = transform;
+            color = new Color(255, 255, 255, 255);
         }
 
         /// <summary>
