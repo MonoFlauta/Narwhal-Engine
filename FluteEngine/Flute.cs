@@ -20,6 +20,7 @@ namespace FluteEngine
 
         private static Flute _instance;
 
+        public CameraManager cameraManager;
         public AssetManager assetManager;
         public InputManager inputManager;
         public UpdateManager updateManager;
@@ -32,6 +33,7 @@ namespace FluteEngine
         public void StartEngine(ContentManager c)
         {
             _instance = this;
+            cameraManager = new CameraManager();
             assetManager = new AssetManager(c);
             updateManager = new UpdateManager();
             inputManager = new InputManager(this);
