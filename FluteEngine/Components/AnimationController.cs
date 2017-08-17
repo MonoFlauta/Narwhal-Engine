@@ -19,7 +19,8 @@ namespace FluteEngine
         public int height;
         public delegate void Event();
 
-        private Event[,] _events;
+        private Event[,] _onFrameEnterEvents;
+        private Event[,] _onFrameExitEvents;
         private float _currentIndex;
         private Dictionary<string, Tuple<int, int>> _labels;
 
@@ -40,20 +41,23 @@ namespace FluteEngine
             this.rows = rows;
             this.columns = columns;
             this.speed = speed;
-            _events = new Event[columns, rows];
+            _onFrameEnterEvents = new Event[columns, rows];
+            _onFrameExitEvents = new Event[columns, rows];
             currentColumn = 0;
             currentRow = 0;
         }
 
         /// <summary>
-        /// Adds an event to a cell
+        /// Adds an event
         /// </summary>
-        /// <param name="column">Column of the cell</param>
-        /// <param name="row">Row of the cell</param>
-        /// <param name="theEvent">Event</param>
-        public void AddEvent(int column, int row, Event theEvent)
+        /// <param name="column">Column for the event</param>
+        /// <param name="row">Row for the event</param>
+        /// <param name="theEvent">The event</param>
+        /// <param name="onFrameEnterEvent">True if it should be an enter frame event. False if it should be an exit event</param>
+        public void AddEvent(int column, int row, Event theEvent, bool onFrameEnterEvent = true)
         {
-            _events[column, row] += theEvent;
+            if (onFrameEnterEvent) _onFrameEnterEvents[column, row] += theEvent;
+            else _onFrameExitEvents[column, row] += theEvent;
         }
 
         /// <summary>
@@ -62,11 +66,57 @@ namespace FluteEngine
         /// <param name="column">Column of the cell</param>
         /// <param name="row">Row of the cell</param>
         /// <param name="theEvent">Event</param>
-        public void RemoveEvent(int column, int row, Event theEvent)
+        /// <param name="onFrameEnterEvent">True if the event was an enter frame event. False if it was an exit event</param>
+        public void RemoveEvent(int column, int row, Event theEvent, bool onFrameEnterEvent = true)
         {
-            _events[column, row] -= theEvent;
+            if (onFrameEnterEvent) _onFrameEnterEvents[column, row] -= theEvent;
+            else _onFrameExitEvents[column, row] -= theEvent;
         }
-        
+
+        /// <summary>
+        /// Adds an enter event
+        /// </summary>
+        /// <param name="column">Column for the event</param>
+        /// <param name="row">Row for the event</param>
+        /// <param name="theEvent">The event</param>
+        public void AddEnterEvent(int column, int row, Event theEvent)
+        {
+            _onFrameEnterEvents[column, row] += theEvent;
+        }
+
+        /// <summary>
+        /// Adds an exit event
+        /// </summary>
+        /// <param name="column">Column for the event</param>
+        /// <param name="row">Row for the event</param>
+        /// <param name="theEvent">The event</param>
+        public void AddExitEvent(int column, int row, Event theEvent)
+        {
+            _onFrameExitEvents[column, row] += theEvent;
+        }
+
+        /// <summary>
+        /// Removes an enter event
+        /// </summary>
+        /// <param name="column">Column for the event</param>
+        /// <param name="row">Row for the event</param>
+        /// <param name="theEvent">The event</param>
+        public void RemoveEnterEvent(int column, int row, Event theEvent)
+        {
+            _onFrameEnterEvents[column, row] -= theEvent;
+        }
+
+        /// <summary>
+        /// Removes an exit event
+        /// </summary>
+        /// <param name="column">Column for the event</param>
+        /// <param name="row">Row for the event</param>
+        /// <param name="theEvent">The event</param>
+        public void RemoveExitEvent(int column, int row, Event theEvent)
+        {
+            _onFrameExitEvents[column, row] -= theEvent;
+        }
+
         /// <summary>
         /// Adds a label in a cell
         /// </summary>
@@ -105,17 +155,18 @@ namespace FluteEngine
             while(_currentIndex >= 1)
             {
                 _currentIndex--;
+                _onFrameExitEvents[currentColumn, currentRow]?.Invoke();
                 currentColumn++;
-                _events[currentColumn, currentRow]?.Invoke();
-                if (currentColumn == columns-1)
+                if (currentColumn == columns)
                 {
                     currentColumn = 0;
                     currentRow++;
-                    if(currentRow == rows-1)
+                    if(currentRow == rows)
                     {
                         currentRow = 0;
                     }
                 }
+                _onFrameEnterEvents[currentColumn, currentRow]?.Invoke();
             }
         }
 
