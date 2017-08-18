@@ -24,7 +24,21 @@ namespace NarwhalEngine
         {
             texture = tex;
             transform = new Transform();
-            color = new Color(255, 255, 255, 255);
+            color = Color.White;
+            currentAnimation = animationController;
+        }
+
+        /// <summary>
+        /// Creates an Animated Display Object with a given color
+        /// </summary>
+        /// <param name="tex">Texture of the display object</param>
+        /// <param name="animationController">The animation controller</param>
+        /// <param name="color">Color of the model</param>
+        public AnimatedDisplayObject(Texture2D tex, AnimationController animationController, Color color)
+        {
+            texture = tex;
+            transform = new Transform();
+            this.color = color;
             currentAnimation = animationController;
         }
 
@@ -38,7 +52,21 @@ namespace NarwhalEngine
         {
             texture = tex;
             this.transform = transform;
-            color = new Color(255, 255, 255, 255);
+            color = Color.White;
+            currentAnimation = animationController;
+        }
+
+        /// <summary>
+        /// Creates an Animated Display Object with a given transform and color
+        /// </summary>
+        /// <param name="tex">Texture of the display object</param>
+        /// <param name="transform">Transform of the display object</param>
+        /// /// <param name="animationController">The animation controller</param>
+        public AnimatedDisplayObject(Texture2D tex, Transform transform, AnimationController animationController, Color color)
+        {
+            texture = tex;
+            this.transform = transform;
+            this.color = color;
             currentAnimation = animationController;
         }
 

@@ -22,9 +22,21 @@ namespace NarwhalEngine
         {
             texture = tex;
             transform = new Transform();
-            color = new Color(255, 255, 255, 255);
+            color = Color.White;
         }
-        
+
+        /// <summary>
+        /// Creates a Display Object with a given color
+        /// </summary>
+        /// <param name="tex">Texture of the display object</param>
+        /// <param name="color">Color of the model</param>
+        public DisplayObject(Texture2D tex, Color color)
+        {
+            texture = tex;
+            transform = new Transform();
+            this.color = color;
+        }
+
         /// <summary>
         /// Creates a Display Object with a given transform
         /// </summary>
@@ -34,7 +46,20 @@ namespace NarwhalEngine
         {
             texture = tex;
             this.transform = transform;
-            color = new Color(255, 255, 255, 255);
+            color = Color.White;
+        }
+
+        /// <summary>
+        /// Creates a Display Object with a given transform and color
+        /// </summary>
+        /// <param name="tex">Texture of the display object</param>
+        /// <param name="transform">Transform of the display object</param>
+        /// /// <param name="color">Color of the model</param>
+        public DisplayObject(Texture2D tex, Transform transform, Color color)
+        {
+            texture = tex;
+            this.transform = transform;
+            this.color = color;
         }
 
         /// <summary>
