@@ -23,5 +23,16 @@ namespace NarwhalEngine
             animatedDisplayObject.currentAnimation = animationController;
             Narwhal.instance.updateManager.AddCallBack(animationController.Update);
         }
+
+        /// <summary>
+        /// Gets the transform from the AnimatedDisplayObject
+        /// </summary>
+        public Transform transform
+        {
+            get
+            {
+                return animatedDisplayObject.transform;
+            }
+        }
     }
 }

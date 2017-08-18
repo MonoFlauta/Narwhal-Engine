@@ -10,6 +10,7 @@ namespace NarwhalEngine
     class Transform
     {
         public Vector2 position;
+        public Vector2 pivot;
         public Vector2 scale;
         public float rotation;
 
@@ -19,7 +20,9 @@ namespace NarwhalEngine
         public Transform()
         {
             position = Vector2.Zero;
+            pivot = Vector2.Zero;
             scale = new Vector2(1, 1);
+            rotation = 0;
         }
     }
 }

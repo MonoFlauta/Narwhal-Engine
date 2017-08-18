@@ -74,7 +74,7 @@ namespace NarwhalEngine
                 null,
                 color,
                 transform.rotation,
-                Vector2.Zero,
+                transform.pivot,
                 transform.scale,
                 SpriteEffects.None,
                 0);

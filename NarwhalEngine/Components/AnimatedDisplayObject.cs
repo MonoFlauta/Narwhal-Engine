@@ -62,6 +62,7 @@ namespace NarwhalEngine
         /// <param name="tex">Texture of the display object</param>
         /// <param name="transform">Transform of the display object</param>
         /// /// <param name="animationController">The animation controller</param>
+        /// <param name="color">Color of the model</param>
         public AnimatedDisplayObject(Texture2D tex, Transform transform, AnimationController animationController, Color color)
         {
             texture = tex;
@@ -82,7 +83,7 @@ namespace NarwhalEngine
                     currentAnimation.GetCurrentRectangle(),
                     color,
                     transform.rotation,
-                    Vector2.Zero,
+                    transform.pivot,
                     transform.scale,
                     SpriteEffects.None,
                     0);
