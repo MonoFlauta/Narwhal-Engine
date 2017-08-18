@@ -89,14 +89,14 @@ namespace NarwhalEngine
         public override bool HitTest(BoxCollider boxCollider)
         {
             var thisRect = new Rectangle(
-                (int)transform.position.X, 
-                (int)transform.position.Y, 
+                (int)(transform.position.X - transform.pivot.X), 
+                (int)(transform.position.Y - transform.pivot.Y), 
                 (int)(width * transform.scale.X), 
                 (int)(height * transform.scale.Y));
 
             var otherRect = new Rectangle(
-                (int)boxCollider.transform.position.X,
-                (int)boxCollider.transform.position.Y,
+                (int)(boxCollider.transform.position.X - boxCollider.transform.pivot.X),
+                (int)(boxCollider.transform.position.Y - boxCollider.transform.pivot.Y),
                 (int)(boxCollider.width * boxCollider.transform.scale.X),
                 (int)(boxCollider.height * boxCollider.transform.scale.Y));
 

@@ -24,5 +24,20 @@ namespace NarwhalEngine
             scale = new Vector2(1, 1);
             rotation = 0;
         }
+
+        /// <summary>
+        /// Creates the transform using the given values
+        /// </summary>
+        /// <param name="position">Position of the transform</param>
+        /// <param name="pivot">Pivot of the transform</param>
+        /// <param name="scale">Scale of the transform</param>
+        /// <param name="rotation">Rotation of the transform</param>
+        public Transform(Vector2 position, Vector2 pivot, Vector2 scale, float rotation)
+        {
+            this.position = position;
+            this.pivot = pivot;
+            this.scale = scale;
+            this.rotation = rotation;
+        }
     }
 }
