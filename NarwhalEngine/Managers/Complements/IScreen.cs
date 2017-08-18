@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluteEngine.Managers.Complements
+namespace NarwhalEngine.Managers.Complements
 {
     interface IScreen
     {

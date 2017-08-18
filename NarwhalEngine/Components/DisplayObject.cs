@@ -6,16 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluteEngine
+namespace NarwhalEngine
 {
     class DisplayObject : ContainerObject
     {
         public Transform transform;
         public Texture2D texture;
         public Color color;
-        public AnimationController currentAnimation;
-
-        private bool _animated;
         
         /// <summary>
         /// Creates a Display Object
@@ -39,35 +36,23 @@ namespace FluteEngine
             this.transform = transform;
             color = new Color(255, 255, 255, 255);
         }
-        
+
         /// <summary>
         /// Draws the display object
         /// </summary>
         /// <param name="spriteBatch">Sprite Batch</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(currentAnimation != null)
-                spriteBatch.Draw(
-                    texture, 
-                    transform.position, 
-                    currentAnimation.GetCurrentRectangle(), 
-                    color, 
-                    transform.rotation, 
-                    Vector2.Zero, 
-                    transform.scale, 
-                    SpriteEffects.None, 
-                    0);
-            else
-                spriteBatch.Draw(
-                    texture, 
-                    transform.position, 
-                    null, 
-                    color, 
-                    transform.rotation, 
-                    Vector2.Zero, 
-                    transform.scale, 
-                    SpriteEffects.None, 
-                    0);
+            spriteBatch.Draw(
+                texture,
+                transform.position,
+                null,
+                color,
+                transform.rotation,
+                Vector2.Zero,
+                transform.scale,
+                SpriteEffects.None,
+                0);
             base.Draw(spriteBatch);
         }
         

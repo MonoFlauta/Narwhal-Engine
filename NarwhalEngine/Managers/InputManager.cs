@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace FluteEngine
+namespace NarwhalEngine
 {
     class InputManager
     {
@@ -19,7 +19,7 @@ namespace FluteEngine
         /// Creates the input manager
         /// </summary>
         /// <param name="e">Engine</param>
-        public InputManager(Flute e)
+        public InputManager(Narwhal e)
         {
             _currentKeyboardState = Keyboard.GetState();
             _currentMouseState = Mouse.GetState();

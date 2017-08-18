@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluteEngine
+namespace NarwhalEngine
 {
     class ContainerObject
     {
@@ -22,7 +22,7 @@ namespace FluteEngine
         /// <summary>
         /// Called in order to draw the objects
         /// </summary>
-        /// <param name="spriteBatch">Sprite batch</param>
+        /// <param name="spriteBatch">Sprite Batch</param>
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             for (int i = _childs.Count -1; i >= 0; i--)

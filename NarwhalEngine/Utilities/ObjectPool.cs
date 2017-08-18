@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FluteEngine.Utilities.Complements;
+using NarwhalEngine.Utilities.Complements;
 
-namespace FluteEngine
+namespace NarwhalEngine
 {
     class ObjectPool<T>
     {

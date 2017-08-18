@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluteEngine;
+using NarwhalEngine;
 using Microsoft.Xna.Framework.Content;
 
-namespace FluteEngine
+namespace NarwhalEngine
 {
-    class Flute
+    class Narwhal
     {
-        public static Flute instance
+        public static Narwhal instance
         {
             get
             {
@@ -18,7 +18,7 @@ namespace FluteEngine
             }
         }
 
-        private static Flute _instance;
+        private static Narwhal _instance;
 
         public CameraManager cameraManager;
         public AssetManager assetManager;

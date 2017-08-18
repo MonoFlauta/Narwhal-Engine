@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluteEngine;
-using FluteEngine.Managers.Complements;
+using NarwhalEngine;
+using NarwhalEngine.Managers.Complements;
 
-namespace FluteEngine
+namespace NarwhalEngine
 {
     class ScreenManager
     {
@@ -26,12 +26,12 @@ namespace FluteEngine
         {
             if(_currentScreen!=null)
             {
-                Flute.instance.updateManager.RemoveCallBack(_currentScreen.Update);
+                Narwhal.instance.updateManager.RemoveCallBack(_currentScreen.Update);
                 _currentScreen.Exit();
             }
             _currentScreen = _screens[name];
             _currentScreen.Open();
-            Flute.instance.updateManager.AddCallBack(_currentScreen.Update);
+            Narwhal.instance.updateManager.AddCallBack(_currentScreen.Update);
         }
 
         /// <summary>
