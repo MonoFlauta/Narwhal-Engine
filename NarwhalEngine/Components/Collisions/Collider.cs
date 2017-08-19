@@ -28,5 +28,6 @@ namespace NarwhalEngine
         }
         
         public abstract bool HitTest(BoxCollider boxCollider);
+        public abstract bool HitTest(CircleCollider circleCollider);
     }
 }

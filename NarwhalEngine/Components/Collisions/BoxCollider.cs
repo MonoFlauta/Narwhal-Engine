@@ -102,5 +102,39 @@ namespace NarwhalEngine
 
             return thisRect.Intersects(otherRect);
         }
+
+        /// <summary>
+        /// Checks collision with a CircleCollider
+        /// </summary>
+        /// <param name="circleCollider">Circle collider to check collision</param>
+        /// <returns>If the collision is made</returns>
+        public override bool HitTest(CircleCollider circleCollider)
+        {
+            var thisRect = new Rectangle(
+                (int)(transform.position.X - transform.pivot.X),
+                (int)(transform.position.Y - transform.pivot.Y),
+                (int)(width * transform.scale.X),
+                (int)(height * transform.scale.Y));
+
+            var otherRealPosition = circleCollider.transform.position - circleCollider.transform.pivot;
+            var otherRect = new Rectangle(
+                (int)otherRealPosition.X,
+                (int)otherRealPosition.Y,
+                circleCollider.radius,
+                circleCollider.radius);
+
+            if (!otherRect.Intersects(thisRect)) return false;
+
+            if (Vector2.Distance(otherRealPosition, new Vector2(thisRect.Left, thisRect.Top)) < circleCollider.radius
+                || Vector2.Distance(otherRealPosition, new Vector2(thisRect.Left, thisRect.Bottom)) < circleCollider.radius
+                || Vector2.Distance(otherRealPosition, new Vector2(thisRect.Right, thisRect.Top)) < circleCollider.radius
+                || Vector2.Distance(otherRealPosition, new Vector2(thisRect.Right, thisRect.Bottom)) < circleCollider.radius)
+                return true;
+
+            otherRect.Size = new Point((int)(otherRect.Size.X / (Math.PI / 2)),
+                (int)(otherRect.Size.Y / (Math.PI / 2)));
+
+            return otherRect.Intersects(thisRect);
+        }
     }
 }
