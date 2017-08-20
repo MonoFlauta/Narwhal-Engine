@@ -43,6 +43,7 @@ namespace NarwhalEngine
             if(includeShaders)
             {
                 assetManager.LoadContent<Effect>("DiffuseWithNormal", "Shaders/DiffuseWithNormal");
+                assetManager.LoadContent<Effect>("BlackAndWhite", "Shaders/BlackAndWhite");
             }
 
             updateManager = new UpdateManager();
