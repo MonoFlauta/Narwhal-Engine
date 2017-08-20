@@ -59,7 +59,7 @@ namespace NarwhalEngine
         /// <param name="transform">Transform</param>
         public void Draw(SpriteBatch spriteBatch, Texture2D texture, Transform transform)
         {
-            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, effect);
+            CameraManager.instance.CheckDrawMaterial(this);
             spriteBatch.Draw(
                 texture,
                 transform.position,
@@ -82,7 +82,7 @@ namespace NarwhalEngine
         /// <param name="rectangle">Rectangle to use</param>
         public void Draw(SpriteBatch spriteBatch, Texture2D texture, Transform transform, Rectangle rectangle)
         {
-            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, effect);
+            CameraManager.instance.CheckDrawMaterial(this);
             spriteBatch.Draw(
                 texture,
                 transform.position,
