@@ -9,7 +9,7 @@ namespace NarwhalEngine
 {
     class AssetManager
     {
-        private Dictionary<string, object> _allContent;
+        private Dictionary<string,Dictionary<string, object>> _allContent;
         private Microsoft.Xna.Framework.Content.ContentManager cManager;
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace NarwhalEngine
         public AssetManager(Microsoft.Xna.Framework.Content.ContentManager c)
         {
             cManager = c;
-            _allContent = new Dictionary<string, object>();
+            _allContent = new Dictionary<string, Dictionary<string, object>>();
         }
 
         /// <summary>
@@ -30,7 +30,9 @@ namespace NarwhalEngine
         /// <param name="path">Path of the content</param>
         public void LoadContent<T>(string name, string path)
         {
-            _allContent.Add(name, cManager.Load<T>(path));
+            var type = typeof(T).ToString();
+            if (!_allContent.ContainsKey(type)) _allContent.Add(type, new Dictionary<string, object>());
+            _allContent[type].Add(name, cManager.Load<T>(path));
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace NarwhalEngine
         /// <returns>The content</returns>
         public T GetAsset<T>(string name)
         {
-            return (T)_allContent[name];
+            return (T)_allContent[typeof(T).ToString()][name];
         }
     }
 }

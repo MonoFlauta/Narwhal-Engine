@@ -14,7 +14,7 @@ namespace NarwhalEngine
         public Transform transform;
         public int scale;
         public SpriteFont font;
-        public Color color;
+        public Material material;
         
         /// <summary>
         /// Creates a text object
@@ -25,7 +25,7 @@ namespace NarwhalEngine
         {
             transform = new Transform();
             this.font = font;
-            color = new Color(255, 255, 255, 255);
+            material = new Material();
             this.scale = scale;
         }
 
@@ -35,7 +35,9 @@ namespace NarwhalEngine
         /// <param name="spriteBatch">Sprite Batch that uses</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font, text, transform.position, color, transform.rotation, transform.position, scale, SpriteEffects.None, 0);
+            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, material.effect);
+            spriteBatch.DrawString(font, text, transform.position, material.color, transform.rotation, transform.position, scale, SpriteEffects.None, 0);
+            spriteBatch.End();
         }
     }
 }

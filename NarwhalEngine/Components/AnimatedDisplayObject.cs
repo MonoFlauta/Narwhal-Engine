@@ -12,7 +12,7 @@ namespace NarwhalEngine
     {
         public Transform transform;
         public Texture2D texture;
-        public Color color;
+        public Material material;
         public AnimationController currentAnimation;
 
         /// <summary>
@@ -24,22 +24,8 @@ namespace NarwhalEngine
         {
             texture = tex;
             transform = new Transform();
-            color = Color.White;
             currentAnimation = animationController;
-        }
-
-        /// <summary>
-        /// Creates an Animated Display Object with a given color
-        /// </summary>
-        /// <param name="tex">Texture of the display object</param>
-        /// <param name="animationController">The animation controller</param>
-        /// <param name="color">Color of the model</param>
-        public AnimatedDisplayObject(Texture2D tex, AnimationController animationController, Color color)
-        {
-            texture = tex;
-            transform = new Transform();
-            this.color = color;
-            currentAnimation = animationController;
+            material = Narwhal.instance.defaultMaterial;
         }
 
         /// <summary>
@@ -52,23 +38,8 @@ namespace NarwhalEngine
         {
             texture = tex;
             this.transform = transform;
-            color = Color.White;
             currentAnimation = animationController;
-        }
-
-        /// <summary>
-        /// Creates an Animated Display Object with a given transform and color
-        /// </summary>
-        /// <param name="tex">Texture of the display object</param>
-        /// <param name="transform">Transform of the display object</param>
-        /// /// <param name="animationController">The animation controller</param>
-        /// <param name="color">Color of the model</param>
-        public AnimatedDisplayObject(Texture2D tex, Transform transform, AnimationController animationController, Color color)
-        {
-            texture = tex;
-            this.transform = transform;
-            this.color = color;
-            currentAnimation = animationController;
+            material = Narwhal.instance.defaultMaterial;
         }
 
         /// <summary>
@@ -77,16 +48,7 @@ namespace NarwhalEngine
         /// <param name="spriteBatch">Sprite Batch</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(
-                    texture,
-                    transform.position,
-                    currentAnimation.GetCurrentRectangle(),
-                    color,
-                    transform.rotation,
-                    transform.pivot,
-                    transform.scale,
-                    SpriteEffects.None,
-                    0);
+            material.Draw(spriteBatch, texture, transform, currentAnimation.GetCurrentRectangle());
             base.Draw(spriteBatch);
         }
 
