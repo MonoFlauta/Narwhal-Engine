@@ -95,5 +95,16 @@ namespace NarwhalEngine
                 0);
             spriteBatch.End();
         }
+
+        /// <summary>
+        /// Get of the Effect Parameter Collection
+        /// </summary>
+        public EffectParameterCollection Parameters
+        {
+            get
+            {
+                return effect.Parameters;
+            }
+        }
     }
 }
