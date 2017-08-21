@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NarwhalEngine
 {
@@ -49,6 +44,27 @@ namespace NarwhalEngine
         {
             this.effect = effect;
             this.color = color;
+        }
+
+        /// <summary>
+        /// Creates a material with one of the default shaders and default color
+        /// </summary>
+        /// <param name="shader">Shader to use</param>
+        public Material(Shaders shader)
+        {
+            color = Color.White;
+            effect = Narwhal.instance.assetManager.GetAsset<Effect>(shader.ToString());
+        }
+
+        /// <summary>
+        /// Creates a material with one of the default shaders and a given color
+        /// </summary>
+        /// <param name="shader">Shader to use</param>
+        /// <param name="color">Color to use</param>
+        public Material(Shaders shader, Color color)
+        {
+            this.color = Color.White;
+            effect = Narwhal.instance.assetManager.GetAsset<Effect>(shader.ToString());
         }
 
         /// <summary>
@@ -105,6 +121,16 @@ namespace NarwhalEngine
             {
                 return effect.Parameters;
             }
+        }
+
+        /// <summary>
+        /// Default shaders that Narwhal Engine brings
+        /// </summary>
+        public enum Shaders
+        {
+            BlackAndWhite,
+            DiffuseWithNormal,
+            MaskedDiffuse
         }
     }
 }

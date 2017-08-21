@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NarwhalEngine;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace NarwhalEngine
@@ -42,8 +36,9 @@ namespace NarwhalEngine
 
             if(includeShaders)
             {
-                assetManager.LoadContent<Effect>("DiffuseWithNormal", "Shaders/DiffuseWithNormal");
-                assetManager.LoadContent<Effect>("BlackAndWhite", "Shaders/BlackAndWhite");
+                assetManager.LoadContent<Effect>(Material.Shaders.BlackAndWhite.ToString(), "Shaders/BlackAndWhite");
+                assetManager.LoadContent<Effect>(Material.Shaders.DiffuseWithNormal.ToString(), "Shaders/DiffuseWithNormal");
+                assetManager.LoadContent<Effect>(Material.Shaders.MaskedDiffuse.ToString(), "Shaders/MaskedDiffuse");
             }
 
             updateManager = new UpdateManager();
