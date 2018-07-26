@@ -127,8 +127,8 @@ namespace NarwhalEngine
                 || Vector2.Distance(otherRealPosition, new Vector2(thisRect.Right, thisRect.Bottom)) < circleCollider.radius)
                 return true;
 
-            otherRect.Size = new Point((int)(otherRect.Size.X / (Math.PI / 2)),
-                (int)(otherRect.Size.Y / (Math.PI / 2)));
+            otherRect.Size = new Point((int)(otherRect.Size.X / (System.Math.PI / 2)),
+                (int)(otherRect.Size.Y / (System.Math.PI / 2)));
 
             return otherRect.Intersects(thisRect);
         }

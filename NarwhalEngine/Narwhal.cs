@@ -9,6 +9,7 @@ namespace NarwhalEngine
         {
             get
             {
+                if (_instance == null) _instance = new Narwhal();
                 return _instance;
             }
         }

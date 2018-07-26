@@ -76,8 +76,8 @@ namespace NarwhalEngine
                 || Vector2.Distance(realPosition, new Vector2(otherRect.Right, otherRect.Bottom)) < radius)
                 return true;
 
-            thisRect.Size = new Point((int)(thisRect.Size.X / (Math.PI / 2)),
-                (int)(thisRect.Size.Y / (Math.PI / 2)));
+            thisRect.Size = new Point((int)(thisRect.Size.X / (System.Math.PI / 2)),
+                (int)(thisRect.Size.Y / (System.Math.PI / 2)));
 
             return thisRect.Intersects(otherRect);
         }
