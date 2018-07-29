@@ -24,6 +24,21 @@ namespace NarwhalEngine
         }
 
         /// <summary>
+        /// Creates a text object with a given text
+        /// </summary>
+        /// <param name="font">Font to use</param>
+        /// <param name="text">Text to use</param>
+        /// <param name="scale">Scale to use</param>
+        public TextObject(SpriteFont font, string text, int scale = 1)
+        {
+            transform = new Transform();
+            this.font = font;
+            this.text = text;
+            material = new Material();
+            this.scale = scale;
+        }
+
+        /// <summary>
         /// Draws the text
         /// </summary>
         /// <param name="spriteBatch">Sprite Batch that uses</param>
