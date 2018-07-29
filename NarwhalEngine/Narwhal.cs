@@ -28,7 +28,7 @@ namespace NarwhalEngine
         /// </summary>
         /// <param name="c">The content manager</param>
         /// <param name="includeShaders">If it should include shaders</param>
-        public void StartEngine(ContentManager c, bool includeShaders = true)
+        public void StartEngine(ContentManager c, bool includeShaders = false)
         {
             _instance = this;
             defaultMaterial = new Material();
