@@ -24,6 +24,7 @@ namespace NarwhalEngine
         /// <param name="spriteBatch">The sprite batch to use</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin();
             _currentDrawMaterial = null;
             _currentSpriteBatch = spriteBatch;
             _hasStarted = false;
@@ -31,6 +32,10 @@ namespace NarwhalEngine
             spriteBatch.End();
         }
 
+        /// <summary>
+        /// Checks that the current material is the one that we are using
+        /// </summary>
+        /// <param name="material">Using material</param>
         public void CheckDrawMaterial(Material material)
         {
             if (_hasStarted)
